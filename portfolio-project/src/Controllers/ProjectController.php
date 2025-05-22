@@ -18,10 +18,10 @@ class ProjectController extends BaseController
         if (!$project) {
             // Handle project not found
             http_response_code(404);
-            echo "Project not found.";
+            $this->render('errors/404', ['message' => 'Project not found.']);
             return;
         }
-        $this->render('projects/show', ['project' => $project]);
+        $this->render('projects/show', ['project' => $project, 'title' => $project->title]);
     }
 
     public function create()
